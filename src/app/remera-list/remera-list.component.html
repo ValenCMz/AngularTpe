@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Marca</th>
+            <th>Tipo</th>
+            <th>Color</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let remera of remeras" [ngClass]="{oferta: remera.oferta}" class="oferta"> <!--uso de directivas-->
+           <td><img [src]="remera.imagen" [alt]="remera.marca"></td>
+           <td>{{remera.marca}}</td> 
+           <td>{{remera.tipo}}</td>
+           <td>{{remera.color}}</td>
+           <td>{{remera.precio | currency}}</td><!--uso de pipes-->
+           <td> <span *ngIf="remera.stock==0">NO HAY STOCK</span> </td> 
+        </tr>
+    </tbody>
+</table>
