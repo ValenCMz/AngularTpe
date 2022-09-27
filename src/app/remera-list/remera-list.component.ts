@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { remera } from './remera';
+import { Remera } from './remera';
 
 @Component({
   selector: 'remera-list',
@@ -8,14 +8,15 @@ import { remera } from './remera';
 })
 export class RemeraListComponent implements OnInit {
 
-  remeras : remera[]=[{
+  remeras : Remera[]=[{
     imagen: "assets/img/vans_musculosa_gris.jpg",
     marca: "Vans",
     tipo: "Musculosa",
     color: "Rojo",
     precio: 200,
     stock: 10,
-    oferta: false
+    oferta: false,
+    cantidad: 0
   },
   {
     imagen: "assets/img/rusty.jpg",
@@ -24,7 +25,8 @@ export class RemeraListComponent implements OnInit {
     color: "Rojo",
     precio: 100,
     stock: 0,
-    oferta: true
+    oferta: true,
+    cantidad: 0
   },
   {
     imagen: 'assets/img/volcom.jpg',
@@ -33,13 +35,24 @@ export class RemeraListComponent implements OnInit {
     color: "Rojo",
     precio: 100,
     stock: 100,
-    oferta: false   
+    oferta: false,
+    cantidad: 0   
   }
 ];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  upCantidad(remera: Remera):void{
+    if(remera.cantidad<remera.stock)
+    remera.cantidad++;
+  }
+
+  downCantidad(remera: Remera):void{
+    if(remera.cantidad>0)
+      remera.cantidad--;
   }
 
 }

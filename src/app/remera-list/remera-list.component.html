@@ -7,6 +7,7 @@
             <th>Color</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Compra</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +17,8 @@
            <td>{{remera.tipo}}</td>
            <td>{{remera.color}}</td>
            <td>{{remera.precio | currency}}</td><!--uso de pipes-->
-           <td> <span *ngIf="remera.stock==0">NO HAY STOCK</span> </td> 
+           <td><span *ngIf="remera.stock==0">NO HAY STOCK</span><span *ngIf="remera.stock!=0">{{remera.stock}}</span></td> 
+            <td><button class="btn btn-primary btn-sm" (click)="downCantidad(remera)">-</button><input type="text" [(ngModel)]="remera.cantidad"><button (click)="upCantidad(remera)" class="btn btn-primary btn-sm">+</button></td>
         </tr>
     </tbody>
 </table>

@@ -1,9 +1,10 @@
-export interface remera{
+export interface Remera{
     imagen: string,
     marca: string,
     tipo: string,
     color: string,
     precio: number,
     stock: number,
-    oferta: boolean
+    oferta: boolean,
+    cantidad: number
 }
