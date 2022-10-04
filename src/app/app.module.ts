@@ -5,12 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RemeraListComponent } from './remera-list/remera-list.component';
 import { FormsModule } from '@angular/forms';
+import { TiendaAboutComponent } from './tienda-about/tienda-about.component';
+import { TiendaRemerasComponent } from './tienda-remeras/tienda-remeras.component';
+import { CarroComprasComponent } from './carro-compras/carro-compras.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RemeraListComponent
+    RemeraListComponent,
+    TiendaAboutComponent,
+    TiendaRemerasComponent,
+    CarroComprasComponent
   ],
   imports: [
     BrowserModule,
