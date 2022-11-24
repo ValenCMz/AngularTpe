@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RemeraCartService } from '../remera-cart.service';
 
 @Component({
   selector: 'carro-compras',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarroComprasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cart: RemeraCartService) {
+   }
 
   ngOnInit(): void {
   }

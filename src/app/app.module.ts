@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { TiendaAboutComponent } from './tienda-about/tienda-about.component';
 import { TiendaRemerasComponent } from './tienda-remeras/tienda-remeras.component';
 import { CarroComprasComponent } from './carro-compras/carro-compras.component';
+import { ImputIntegerComponent } from './imput-integer/imput-integer.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CarroComprasComponent } from './carro-compras/carro-compras.component';
     RemeraListComponent,
     TiendaAboutComponent,
     TiendaRemerasComponent,
-    CarroComprasComponent
+    CarroComprasComponent,
+    ImputIntegerComponent
   ],
   imports: [
     BrowserModule,

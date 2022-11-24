@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RemeraCartService } from '../remera-cart.service';
 import { Remera } from './remera';
 
 @Component({
@@ -40,19 +41,16 @@ export class RemeraListComponent implements OnInit {
   }
 ];
 
-  constructor() { }
+
+  constructor(private cart: RemeraCartService) {//forma de usar servicios injectados en angular, esta es la buena practica
+  }
 
   ngOnInit(): void {
   }
 
-  upCantidad(remera: Remera):void{
-    if(remera.cantidad<remera.stock)
-    remera.cantidad++;
-  }
 
-  downCantidad(remera: Remera):void{
-    if(remera.cantidad>0)
-      remera.cantidad--;
+  addToCart(remera: any):void{
+    this.cart.addToCart(remera);
   }
 
 }
