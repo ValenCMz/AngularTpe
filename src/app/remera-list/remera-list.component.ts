@@ -51,6 +51,8 @@ export class RemeraListComponent implements OnInit {
 
   addToCart(remera: any):void{
     this.cart.addToCart(remera);
+    remera.stock -= remera.cantidad;
+    remera.cantidad = 0;
   }
 
 }

@@ -20,11 +20,11 @@
            <td>{{remera.color}}</td>
            <td>{{remera.precio | currency}}</td><!--uso de pipes-->
            <td >
-                 <span class="stock" *ngIf="remera.stock==0">NO HAY STOCK</span>   
+                 <span class="stock btn btn-warning btn-sm" *ngIf="remera.stock==0">NO HAY STOCK</span>   
                 <app-imput-integer [(cantidad)]="remera.cantidad" [max]="remera.stock" ></app-imput-integer>
             </td>
             <td>
-                <button class="btn" *ngIf="remera.stock!=0" (click)="addToCart(remera)" >Agregar al Carrito</button>
+                <button class="btn btn-success" *ngIf="remera.stock!=0" (click)="addToCart(remera)" >Agregar al Carrito</button>
             </td>
         </tr>
     </tbody>

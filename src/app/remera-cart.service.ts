@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Remera } from './remera-list/remera';
 
 //maneja la logica del carrito 
@@ -7,15 +8,20 @@ import { Remera } from './remera-list/remera';
 })
 export class RemeraCartService {
 
-  cartList  : Remera[] = [];
+  private _cartList:Remera[]=[];//convertimos la variable que queremos observar en privada
+  cartList  : BehaviorSubject<Remera[]> = new BehaviorSubject(this._cartList);
 
   constructor() { } 
 
   addToCart(remera: Remera) {
-    let item : Remera = this.cartList.find((v1)=>v1.marca==remera.marca);
+    let item : Remera = this._cartList.find((v1)=>v1.marca==remera.marca)!;
     if(!item){
-      this.cartList.push(remera);  
+      this._cartList.push({... remera}); //hacemos un clone del objeto
+    }else{
+      item.cantidad += remera.cantidad;
     }
+    console.log(this._cartList);
+    this.cartList.next(this._cartList);//equivalente al emmit de eventos
    
   }
 
