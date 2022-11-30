@@ -13,15 +13,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let remera of remeras" [ngClass]="{oferta: remera.oferta}" class="oferta"> <!--uso de directivas-->
+        <tr *ngFor="let remera of remeras"> <!--uso de directivas-->
            <td><img [src]="remera.imagen" [alt]="remera.marca"></td>
            <td>{{remera.marca}}</td> 
            <td>{{remera.tipo}}</td>
-           <td>{{remera.color}}</td>
-           <td>{{remera.precio | currency}}</td><!--uso de pipes-->
+           <td >{{remera.color}}</td>
+           <td [ngClass]="{'precio-oferta': remera.oferta}"><span [ngClass]="{'oferta': remera.oferta}">{{remera.precio | currency}} </span></td><!--uso de pipes-->
            <td >
                  <span class="stock btn btn-warning btn-sm" *ngIf="remera.stock==0">NO HAY STOCK</span>   
-                <app-imput-integer [(cantidad)]="remera.cantidad" [max]="remera.stock" ></app-imput-integer>
+                <app-imput-integer [(cantidad)]="remera.cantidad" [max]="remera.stock" *ngIf="remera.stock>0" ></app-imput-integer>
             </td>
             <td>
                 <button class="btn btn-success" *ngIf="remera.stock!=0" (click)="addToCart(remera)" >Agregar al Carrito</button>
