@@ -7,6 +7,7 @@ import { Remera } from './remera-list/remera';
   providedIn: 'root'
 })
 export class RemeraCartService {
+  
 
   private _cartList:Remera[]=[];//convertimos la variable que queremos observar en privada
   cartList  : BehaviorSubject<Remera[]> = new BehaviorSubject(this._cartList);
@@ -23,6 +24,12 @@ export class RemeraCartService {
     console.log(this._cartList);
     this.cartList.next(this._cartList);//equivalente al emmit de eventos
    
+  }
+
+  deleteToCart(remera: Remera) {
+    const eliminar = this._cartList.findIndex(p=> p.marca == remera.marca);
+    this._cartList.splice(eliminar,1);
+    this.cartList.next(this._cartList);
   }
 
 }

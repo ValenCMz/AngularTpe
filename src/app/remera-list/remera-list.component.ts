@@ -23,9 +23,11 @@ export class RemeraListComponent implements OnInit {
 
 
   addToCart(remera: any):void{
-    this.cart.addToCart(remera);
-    remera.stock -= remera.cantidad;
-    remera.cantidad = 0;
+    if(remera.cantidad>0){//para q solo agregue remeras si hay alguna seleccionada
+      this.cart.addToCart(remera);
+      remera.stock -= remera.cantidad;
+      remera.cantidad = 0;  
+    }
   }
 
 }

@@ -9,7 +9,7 @@ import { Remera } from '../remera-list/remera';
   styleUrls: ['./carro-compras.component.scss']
 })
 export class CarroComprasComponent implements OnInit {
-
+  total:number=0;
   cartList$!: Observable<Remera[]>;
 
 
@@ -18,7 +18,18 @@ export class CarroComprasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cartList$.forEach(element => {
+      element.forEach(prod=>{
+        this.total += prod.cantidad* prod.precio;
+      })
+    });
   }
+
+  deleteToCart(remera:any):void{
+    this.cart.deleteToCart(remera);
+  }
+
+
 
   
 

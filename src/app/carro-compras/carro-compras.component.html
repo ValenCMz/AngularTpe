@@ -1,6 +1,22 @@
 <h3>Carro de compras</h3>
-<ul>
-    <li *ngFor="let remera of cartList$ | async">
-        {{remera.marca}}: {{remera.cantidad}}
-    </li>
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let remera of cartList$ | async" >
+            <th>{{remera.marca}}</th>
+            <th>{{remera.cantidad}}</th>
+            <th>${{remera.precio}}</th>
+            <button *ngIf="remera.cantidad>0" (click)="deleteToCart(remera)">Eliminar Producto</button>
+        </tr>        
+    </tbody>
+</table>
+
+<span>Precio Total</span>
+<p>${{total}}</p>
+<button>Comprar</button>
