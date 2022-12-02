@@ -7,15 +7,14 @@ import { Remera } from './remera-list/remera';
   providedIn: 'root'
 })
 export class RemeraCartService {
-  
 
   private _cartList:Remera[]=[];//convertimos la variable que queremos observar en privada
   cartList  : BehaviorSubject<Remera[]> = new BehaviorSubject(this._cartList);
 
-  constructor() { } 
+  constructor() {} 
 
   addToCart(remera: Remera) {
-    let item : Remera = this._cartList.find((v1)=>v1.marca==remera.marca)!;
+    let item = this._cartList.find((v1)=>v1.marca==remera.marca);
     if(!item){
       this._cartList.push({... remera}); //hacemos un clone del objeto
     }else{
@@ -26,9 +25,9 @@ export class RemeraCartService {
    
   }
 
-  deleteToCart(remera: Remera) {
-    const eliminar = this._cartList.findIndex(p=> p.marca == remera.marca);
-    this._cartList.splice(eliminar,1);
+  deleteToCart(remera:Remera){
+    const eliminar = this._cartList.findIndex(v1 => v1.marca=== remera.marca); 
+    this._cartList.splice(eliminar, 1);
     this.cartList.next(this._cartList);
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { RemeraCartService } from '../remera-cart.service';
 import { Remera } from '../remera-list/remera';
 
@@ -9,8 +9,9 @@ import { Remera } from '../remera-list/remera';
   styleUrls: ['./carro-compras.component.scss']
 })
 export class CarroComprasComponent implements OnInit {
-  total:number=0;
-  cartList$!: Observable<Remera[]>;
+ 
+ 
+  cartList$: Observable<Remera[]>;
 
 
   constructor(private cart: RemeraCartService) {
@@ -18,17 +19,22 @@ export class CarroComprasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  deleteToCart(remera: Remera):void{
+    this.cart.deleteToCart(remera);
+    remera.stock += remera.cantidad;
+  }
+
+  calcTotal(){
+    let sum=0;
     this.cartList$.forEach(element => {
       element.forEach(prod=>{
-        this.total += prod.cantidad* prod.precio;
+        sum += prod.cantidad* prod.precio;
       })
     });
+    return sum;
   }
-
-  deleteToCart(remera:any):void{
-    this.cart.deleteToCart(remera);
-  }
-
 
 
   

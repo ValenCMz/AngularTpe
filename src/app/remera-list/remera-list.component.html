@@ -8,7 +8,6 @@
             <th>Tipo</th>
             <th>Color</th>
             <th>Precio</th>
-            <th>Stock</th>
             <th>Compra</th>
         </tr>
     </thead>
@@ -19,12 +18,12 @@
            <td>{{remera.tipo}}</td>
            <td >{{remera.color}}</td>
            <td [ngClass]="{'precio-oferta': remera.oferta}"><span [ngClass]="{'oferta': remera.oferta}">{{remera.precio | currency}} </span></td><!--uso de pipes-->
-           <td >
-                 <span class="stock btn btn-warning btn-sm" *ngIf="remera.stock==0">NO HAY STOCK</span>   
-                <app-imput-integer [(cantidad)]="remera.cantidad" [max]="remera.stock" *ngIf="remera.stock>0" ></app-imput-integer>
+           <td>
+            <span class="stock btn btn-warning btn-sm" *ngIf="stock(remera)==0;">SIN STOCK</span>  
+                <app-imput-integer [(cantidad)]="remera.cantidad" [max]="remera.stock" *ngIf="stock(remera)>0" ></app-imput-integer>
             </td>
             <td>
-                <button class="btn btn-success" *ngIf="remera.stock!=0" (click)="addToCart(remera)" >Agregar al Carrito</button>
+                <button class="btn btn-success" *ngIf="stock(remera)>0" (click)="addToCart(remera)" >Agregar al Carrito</button>
             </td>
         </tr>
     </tbody>

@@ -12,11 +12,11 @@
             <th>{{remera.marca}}</th>
             <th>{{remera.cantidad}}</th>
             <th>${{remera.precio}}</th>
-            <button *ngIf="remera.cantidad>0" (click)="deleteToCart(remera)">Eliminar Producto</button>
+            <span><button (click)="deleteToCart(remera)">Eliminar</button></span>
         </tr>        
     </tbody>
 </table>
 
 <span>Precio Total</span>
-<p>${{total}}</p>
-<button>Comprar</button>
+<p>${{calcTotal()}}</p>
+

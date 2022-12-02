@@ -11,7 +11,7 @@ import { Remera } from './remera';
 export class RemeraListComponent implements OnInit {
 
   remeras : Remera[]=[];
-
+  carts : Remera [] = [];
 
   constructor(private cart: RemeraCartService, private remerasDataService: RemeraDataService) {//forma de usar servicios injectados en angular, esta es la buena practica
   }
@@ -19,15 +19,21 @@ export class RemeraListComponent implements OnInit {
   ngOnInit(): void {
     this.remerasDataService.getAll()
       .subscribe(remeras=>this.remeras = remeras);
+      this.cart.cartList.subscribe((c)=>this.carts=c);
   }
 
-
-  addToCart(remera: any):void{
-    if(remera.cantidad>0){//para q solo agregue remeras si hay alguna seleccionada
+  addToCart(remera: any): void {
       this.cart.addToCart(remera);
-      remera.stock -= remera.cantidad;
-      remera.cantidad = 0;  
+      remera.cantidad=0;
+  }
+  
+  stock(remera: Remera) {
+    let item = this.carts.find((v1)=>v1.marca===remera.marca);
+    if(!item) {
+      return remera.stock;
+    }
+    else {
+      return remera.stock-item.cantidad;
     }
   }
-
 }

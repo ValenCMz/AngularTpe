@@ -36,4 +36,5 @@ export class ImputIntegerComponent implements OnInit {
       this.cantidad--;
       this.cantidadChange.emit(this.cantidad);
   }
+
 }
