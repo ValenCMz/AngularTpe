@@ -5,11 +5,12 @@ import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RemeraListComponent } from './remera-list/remera-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TiendaAboutComponent } from './tienda-about/tienda-about.component';
 import { TiendaRemerasComponent } from './tienda-remeras/tienda-remeras.component';
 import { CarroComprasComponent } from './carro-compras/carro-compras.component';
 import { ImputIntegerComponent } from './imput-integer/imput-integer.component';
+import { CrearRemerasComponent } from './crear-remeras/crear-remeras.component';
 
 
 @NgModule({
@@ -19,13 +20,15 @@ import { ImputIntegerComponent } from './imput-integer/imput-integer.component';
     TiendaAboutComponent,
     TiendaRemerasComponent,
     CarroComprasComponent,
-    ImputIntegerComponent
+    ImputIntegerComponent,
+    CrearRemerasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
